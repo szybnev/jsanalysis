@@ -23,7 +23,7 @@ task(){
 	printf "Crawl... $LINE\n"
 
 	printf $LINE | timeout 1800 gospider -t 1 --concurrent 1 -d 1 --other-source --include-other-source --delay 1 --timeout 120 --js=false --sitemap --depth 2 --robots --blacklist eot,jpg,jpeg,gif,css,tif,tiff,png,ttf,otf,woff,woff2,ico,pdf,svg,txt,mp4,avi,mpeg4,mp3,webm,ogv,gif,jpg,jpeg,png > $outputdir/$i/gospider.txt
-	cat $outputdir/$i/gospider.txt | grep -vE 'https?:\/\/.*\.json' | grep -vE 'jquery|bootstrap|ga.js|watch.js|wp-embed|angular|wf\-|recaptcha|gtm.js|google|sweetalert|i18n' | grep -E 'https?:\/\/.*\.js' -o | sort -u > $outputdir/$i/wget.txt
+	cat $outputdir/$i/gospider.txt | grep -vE 'https?:\/\/.*\.json' | grep -vE 'jquery|tilda|bootstrap|ga.js|watch.js|wp-embed|angular|wf\-|recaptcha|gtm.js|google|sweetalert|i18n' | grep -E 'https?:\/\/.*\.js' -o | sort -u > $outputdir/$i/wget.txt
 
 	## lauching wayback with a "js only" mode to reduce execution time
 	printf 'Launching Gau with wayback..\n'
